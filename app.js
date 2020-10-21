@@ -13,7 +13,7 @@ const common = require('./common/common')
  * 리눅스 : export NODE_ENV=local&&npm start로 실행
  */
 var dotenv = require('dotenv');
-dotenv.config({
+dotenv.config({ 
   path: path.resolve(
     process.cwd(),
     process.env.NODE_ENV = ".env."+process.env.NODE_ENV
