@@ -1,0 +1,18 @@
+# Use yarn.lock instead
+package-lock.json
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+#설정파일
+config
+
+#env파일
+.env.dev
+.env.local
+.env.prd
+
+#패키지
+node_modules
