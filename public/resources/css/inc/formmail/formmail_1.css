@@ -1,0 +1,10 @@
+/* 기본 텍스트 스타일 */
+.formmail_txt {font-size:12px;font-family:굴림,돋움;color:#333333}
+/* 텍스트박스 스타일 */
+.formmail_border {font-size:12px;font-family:굴림,돋움;color:#333333;border:1 solid #D4D4D4}
+/* 항목칸 스타일 */
+.formmail_title_bgcolor {background-color:#F7F7F7;font-family:굴림,돋움}
+/* 입력칸 스타일 */
+.formmail_cell_bgcolor {background-color:#FFFFFF;font-size:12;font-family:굴림,돋움;color:#333333;padding-left:10;}
+.table_02 { width:100%; border-top:2px #4fb3d2 solid; border-bottom:1px #4fb3d2 solid; border-left:1px #e5e5e5 solid; }
+.table_02 td { border-bottom:1px #e5e5e5 solid; border-right:1px #e5e5e5 solid; padding:4px; }
