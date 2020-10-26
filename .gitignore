@@ -16,3 +16,5 @@ config
 
 #패키지
 node_modules
+
+public

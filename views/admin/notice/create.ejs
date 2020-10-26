@@ -1,0 +1,97 @@
+<%- include('../layout/classicAdmin.ejs') %>
+<%- include('../layout/headerAdmin.ejs') %>
+<%- include('../common/libTable.ejs') %>
+<% const key = 'notice'%>
+
+
+<script>
+	function goSubmit() {
+		submitContents("submit-btn", "content");
+	}
+	$(function(){
+		$(document).on("click", ".submit-btn", function(){
+			var title = $("input[name=title]");
+			var content = $("textarea[name=content]");
+			var file_url = $("input[name=file_url]");
+			var write_by = $("input[name=write_by]");
+			var param = {
+					"title" : title.val(),
+					"content" : content.val(),
+					"file_url" : file_url.val(),
+					"write_by": write_by.val()
+			}
+			
+			ajaxCallPost("/supervise/<%=key%>/create", param, function(res){
+				if(res.success){
+					alert("작업이 완료되었습니다.");
+					location.href="/supervise/<%=key%>/list"
+				}
+			},function(){})
+		})
+		/*
+			 파일업로드
+		*/
+		$(".file_fun").change(function(){
+			ajaxUpload($(".file_fun")[0].files[0], "notice", function(data_url) {
+				$("input[name='file_url']").val(data_url);
+			})
+		})
+	})
+</script>
+
+<!-- Static Table Start -->
+<div class="all-content-wrapper"
+	style="min-height: 900px; background: white;">
+
+
+
+	<div id="myTabContent" class="tab-content custom-product-edit"
+		style="padding: 0px 50px 0 50px">
+		<div class="product-tab-list tab-pane fade active in" id="description">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="review-content-section">
+					
+					 <div class="sparkline13-hd">
+                                <div class="main-sparkline13-hd">
+                                    <h1>공지사항 <span class="table-project-n">Data</span> Table</h1>
+                                </div>
+                            </div>
+					
+						<div id="dropzone1" class="pro-ad">
+							<form class="dropzone dropzone-custom needsclick add-professors">
+								<input type="hidden" name="write_by" value="<%=ADMIN.admin_seq %>">
+								<div class="row">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+										<div class="form-group">
+											<input name="title" type="text" class="form-control" placeholder="제목">
+										</div>
+										<div class="form-group">
+											<textarea id="ir1" rows="10" cols="300" name="content"></textarea>
+										</div>
+										<div class="form-group">
+											<input name="file_url" type="hidden" class="form-control" >
+											<input name="" type="file" class="form-control file_fun" >
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="payment-adress">
+											<button type="button"
+												class="btn btn-primary waves-effect waves-light" onclick="javascript:goSubmit()">Submit</button>
+												<button class="submit-btn" type="button" style="display: none"></button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Static Table End -->
+<%- include('../common/edit_form.ejs') %>
+<%- include('../layout/footerAdmin.ejs') %>

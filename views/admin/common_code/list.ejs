@@ -1,0 +1,92 @@
+<%- include('../layout/classicAdmin.ejs') %>
+<%- include('../layout/headerAdmin.ejs') %>
+<%- include('../common/libTable.ejs') %>
+<% const key = 'common'%>
+<% const seq = 'common_seq'%>
+    <script>
+    	$(function(){
+    		$(document).on("click", ".go-detail-item", function(e){
+    			if(!is_show){
+	    			location.href="/supervise/<%=key%>/read/"+$(this).attr("data-seq")
+    			}
+    		})
+    		$(document).on("click", ".btn-success", function(){
+				location.href="/supervise/<%=key%>/create";
+			})
+    		setTimeout(function(){
+				$("#table").fadeIn(1000);
+			},500)
+    	})
+    </script>
+    
+        <!-- Static Table Start -->
+        <div class="all-content-wrapper" style="min-height: 900px;background: white;">
+        
+        <div class="data-table-area mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="sparkline13-list">
+                            <div class="sparkline13-hd">
+                                <div class="main-sparkline13-hd">
+                                    <h1>공통코드 <span class="table-project-n">Data</span> Table</h1>
+                                </div>
+                            </div>
+                            <div class="sparkline13-graph">
+                                <div class="datatable-dashv1-list custom-datatable-overright">
+                                    <div id="toolbar">
+                                        <select class="form-control dt-tb">
+											<option value="">Export Basic</option>
+											<option value="all">Export All</option>
+											<option value="selected">Export Selected</option>
+										</select>
+                                    </div>
+                                    <table id="table" style="display: none" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+                                        data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                        <thead>
+                                            <tr>
+                                                <th>번호</th>
+                                                <th>코드명</th>
+                                                <th>순서</th>
+                                                <th>대분류코드</th>
+                                                <th>소분류코드</th>
+                                                <th>설명</th>
+                                                <th>생성일자</th>
+                                                <th>노출여부</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <% for(var i = 0; i < list.length; i++){ var item = list[i]; var temp_seq = item.faq_seq;%>
+                                           	   <tr class="go-detail-item" data-seq="<%=item.common_seq%>">
+	                                                <td><%=item.rownum %></td>
+	                                                <td><%=item.name %></td>
+	                                                <td><%=item.sort %></td>
+	                                                <td><%=item.code %></td>
+	                                                <td><%=item.sub_code %></td>
+	                                                <td><%=item.discription %></td>
+	                                                <td><%=item.create_dt_yyyymmdd %></td>
+                                                    <td>
+                                                        <div class="btn-group" data-toggle="buttons">
+                                                            <label class="btn btn-warning showBtn showYnBtn <%if(item.show_yn == 'Y'){%>active<%}%>" data-role="Y" data-seq="<%=temp_seq%>" data-table-name="<%=key%>" data-table-seq="<%=seq%>"> 
+                                                                <input type="radio" name="showyn" checked="<%if(item.show_yn == 'Y'){%>checked<%}%>" style="display: none">노출
+                                                            </label> 
+                                                            <label class="btn btn-warning showBtn showYnBtn <%if(item.show_yn == 'N'){%>active<%}%>" data-role="N" data-seq="<%=temp_seq%>" data-table-name="<%=key%>" data-table-seq="<%=seq%>"> 
+                                                                <input type="radio" name="showyn" checked="<%if(item.show_yn == 'N'){%>checked<%}%>" style="display: none">비노출
+                                                            </label>
+                                                        </div>
+                                                    </td>
+	                                            </tr>
+                                                <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-custon-four btn-success" style="float: right;margin-top: 30px;">등록</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- Static Table End -->
+        <%- include('../layout/footerAdmin.ejs') %>

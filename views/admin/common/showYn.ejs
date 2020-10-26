@@ -1,0 +1,10 @@
+<td>
+	<div class="btn-group" data-toggle="buttons">
+		<label class="btn btn-warning showBtn showYnBtn <%if(item.show_yn == 'Y'){%>active<%}%>" data-role="Y" data-seq="<%=temp_seq%>" data-table-name="<%=key%>" data-table-seq="<%=seq%>"> 
+			<input type="radio" name="showyn" checked="<%if(item.show_yn == 'Y'){%>checked<%}%>" style="display: none">노출
+		</label> 
+		<label class="btn btn-warning showBtn showYnBtn <%if(item.show_yn == 'N'){%>active<%}%>" data-role="N" data-seq="<%=temp_seq%>" data-table-name="<%=key%>" data-table-seq="<%=seq%>"> 
+			<input type="radio" name="showyn" checked="<%if(item.show_yn == 'N'){%>checked<%}%>" style="display: none">비노출
+		</label>
+	</div>
+</td>

@@ -1,0 +1,154 @@
+<script>
+	$(function(){
+		var global_menu_tab = $(".global-menu-tab");
+		for(var i = 0 ; i < global_menu_tab.length ; i++){
+			var data_url = global_menu_tab.eq(i).attr("data-url").split("|");
+			for(var x = 0 ; x < data_url.length ; x++){
+				if(location.pathname.indexOf(data_url[x]) > -1 && data_url[x]){
+					global_menu_tab.removeClass("active");
+					global_menu_tab.find("a").attr("aria-expanded", "true");
+					global_menu_tab.find("ul").removeClass("show");
+					
+					global_menu_tab.eq(i).addClass("active");
+					global_menu_tab.eq(i).find("a").attr("aria-expanded", "true");
+					global_menu_tab.eq(i).find("ul").addClass("show");
+				}
+			}
+        }
+        var admin_seq = "<%=ADMIN.admin_seq%>";
+        if(!admin_seq){
+            alert("로그인을 해주세요.")
+            location.href="/supervise"
+        }
+	})
+</script>
+<style>
+	.go-detail-item{
+		cursor: pointer;
+	}
+</style>
+<body>
+<!-- 레프트 메뉴 -->
+ <!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+    <!-- Start Left menu area -->
+    <div class="left-sidebar-pro">
+        <nav id="sidebar" class="">
+            <div class="sidebar-header">
+                <a href="/supervise"><img class="main-logo" src="/resources/images/h_logo.png" alt="" style="height: 60px;width: 200px;" /></a>
+                <strong><a href="index.html"><img src="/resources/admin/img/logo/logosn.png" alt="" /></a></strong>
+            </div>
+            <div class="left-custom-menu-adp-wrap comment-scrollbar">
+                <nav class="sidebar-nav left-sidebar-menu-pro">
+                    <ul class="metismenu" id="menu1">
+                        <li class="global-menu-tab" data-url="admin">
+                            <a class="has-arrow" href="/supervise/admin/list">
+								   <span class="educate-icon educate-home icon-wrap"></span>
+								   <span class="mini-click-non">관리자관리</span>
+								</a>
+                            <ul class="submenu-angle" aria-expanded="true" style="display: none">
+                                <li><a title="Dashboard v.1" href="/supervise/admin/list"><span class="mini-sub-pro">관리자리스트</span></a></li>
+                                <li><a title="Dashboard v.2" href="/supervise/admin/create"><span class="mini-sub-pro">관리자추가</span></a></li>
+                            </ul>
+                        </li>
+                         <li class="global-menu-tab" data-url="contact|notice|faq">
+                            <a class="has-arrow" href="/supervise/contact/list">
+								   <span class="educate-icon educate-department icon-wrap"></span>
+								   <span class="mini-click-non">서비스관리</span>
+								</a>
+                            <ul class="submenu-angle" aria-expanded="true" style="display: none">
+                                <li><a title="Dashboard v.1" href="/supervise/contact/list"><span class="mini-sub-pro">문의관리</span></a></li>
+                                <li><a title="Dashboard v.1" href="/supervise/notice/list"><span class="mini-sub-pro">공지사항관리</span></a></li>
+                                <li><a title="Dashboard v.1" href="/supervise/faq/list"><span class="mini-sub-pro">FAQ관리</span></a></li>
+                                <!--<li><a title="Dashboard v.1" href="/supervise/banner/list"><span class="mini-sub-pro">배너관리</span></a></li>-->
+                            </ul>
+                        </li>
+                         <li class="global-menu-tab" data-url="common">
+                            <a class="has-arrow" href="/supervise/common/list">
+								   <span class="educate-icon educate-department icon-wrap"></span>
+								   <span class="mini-click-non">시스템관리</span>
+								</a>
+                            <ul class="submenu-angle" aria-expanded="true" style="display: none">
+                                <li><a title="Dashboard v.1" href="/supervise/common/list"><span class="mini-sub-pro">공통코드관리</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+    </div>
+<!-- 레프트 메뉴 -->
+<script>
+// $(".submenu-angle").show();
+</script>
+<!-- 상단메뉴 -->
+		<div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="logo-pro">
+                        <a href="index.html"><img class="main-logo" src="/resources/images/h_logo.png" alt="" style="height: 60px;" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-advance-area">
+            <div class="header-top-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="header-top-wraper">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12"style="width: 100%;">
+                                        <div class="header-top-menu tabl-d-n">
+                                            <ul class="nav navbar-nav mai-top-nav" style="float: right">
+                                                <li class="nav-item"><a href="#" class="nav-link" style="color:black;font-size: 12px;"><%=ADMIN.name%>님</a></li>
+                                                <li class="nav-item"><a href="/supervise/login/logout" class="nav-link" style="color:#8d9498;font-size: 12px;"">로그아웃</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu start -->
+            <div class="mobile-menu-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="mobile-menu">
+                                <nav id="dropdown">
+                                    <ul class="mobile-menu-nav">
+                                        <li><a data-toggle="collapse" data-target="#Charts" href="/supervise/admin/list">관리자관리<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                            <ul class="collapse dropdown-header-top">
+                                                <li><a href="/supervise/admin/list">관리자리스트</a></li>
+                                                <li><a href="/supervise/admin/create">관리자추가</a></li>
+                                            </ul>
+                                        </li>
+                                        
+                                        <li><a data-toggle="collapse" data-target="#Charts" href="/supervise/contact/list">서비스관리<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                            <ul class="collapse dropdown-header-top">
+                                                <li><a href="/supervise/contact/list">문의관리</a></li>
+                                                <li><a href="/supervise/notice/list">공지사항관리</a></li>
+                                                <li><a href="/supervise/faq/list">FAQ관리</a></li>
+                                            </ul>
+                                        </li>
+                                        
+                                        <li><a data-toggle="collapse" data-target="#Charts" href="/supervise/common/list">시스템관리<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                            <ul class="collapse dropdown-header-top">
+                                                <li><a href="/supervise/common/list">공통코드관리</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- Mobile Menu end -->
+
+<!-- 상단메뉴 -->

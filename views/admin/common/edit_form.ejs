@@ -1,0 +1,17 @@
+
+<!-- 스마트 에디터 이용시 -->
+<!-- 
+	1.해당 파일 인클루드
+	2.사용하고자 하는 페이지에 <textarea> 태그 존재 id ="ir1"
+	3.textarea에 데이터를 넣어주려면 oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);를 정의해야한다. 보통 인서트, 업데이트시 서버단으로 요청하기 바로직전에 정의한다.
+	위의 3가지 적용시 스마트에디터 ui 나올것이며 데이터를 서버단으로 넘길수있다.
+	4.servlet.xml에 추가
+	
+	파일
+	1.edit_form.jsp
+	2.edit_form.js
+	3.resources 내부의 se2폴더
+	4.view폴더 내부의 se2폴더
+ -->
+<script type="text/javascript" src="/resources/se2/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="/resources/js/edit_form.js" charset="utf-8"></script>
